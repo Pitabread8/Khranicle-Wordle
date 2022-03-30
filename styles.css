@@ -37,3 +37,8 @@ body {
     text-align: center;
     caret-color: transparent;
 }
+
+/* These are just placeholder classes, change these to however you had them before */
+.g { background-color: lightgreen; }
+.y { background-color: yellow; }
+.n { background-color: gray; }
