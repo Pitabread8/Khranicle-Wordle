@@ -1,10 +1,11 @@
 :root {
-    --green: #CADD3C;
-    --middle: #5ECBE1;
+    --green: #ACBF22;
+    --sky: #5ECBE1;
     --purple: #7691CB;
     --pacific: #1ABFDA;
     --navy: #202B38;
-    --white: #fff;
+    --queen: #3C4F68;
+    --white: #FFF;
 }
 
 body {
@@ -31,7 +32,7 @@ body {
     width: 50px;
     height: 55px;
     background-color: transparent;
-    border: 2px var(--middle) solid;
+    border: 2px var(--purple) solid;
     font-size: 30px;
     color: var(--white);
     text-align: center;
@@ -39,6 +40,6 @@ body {
 }
 
 /* These are just placeholder classes, change these to however you had them before */
-.g { background-color: lightgreen; }
-.y { background-color: yellow; }
-.n { background-color: gray; }
+.g { background-color: var(--green); }
+.y { background-color: var(--sky); }
+.n { background-color: var(--queen); }
