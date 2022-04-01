@@ -1,6 +1,7 @@
 // to-do:
 // when word AND guess have same repeat letters
 // when guess has three repeat letters and word has that letter
+// chrome copy and paste &$#*&%$
 
 let word = "nerds";
 let list = document.getElementsByClassName("letters");
@@ -35,13 +36,13 @@ document.addEventListener('gameover', () => {
         .filter(e => e.length)
         .map(e =>  Object.create({
                 g:'🟩',
-                y:'🟨',
+                b:'🟦',
                 n:'⬛'  
             })[e]
         ).reduce((p, c, i) => p += (i+1) % 5 === 0 ? `${c}\n` : c, '');
     let tries = rowID > 5 ? 'X' : rowID+1;
 
-    let shouldCopy = window.confirm(`KLS Wordle ${tries}/6\n\n${guesses}\n\nPress "Okay" to copy your results`);
+    let shouldCopy = window.confirm(`KLS Wordle ${tries}/6\n\n${guesses}\nClick "Okay" to copy your results`);
     if (shouldCopy) 
         navigator.clipboard.writeText(`KLS Wordle ${tries}/6\n\n${guesses}`)
         .then(() => alert('Copied!'));
@@ -72,7 +73,7 @@ function createGrid() {
  * word nerds
  * gues nosrs
  * enum gnnyg
- */
+**/
 function verifyWord() {
     let guessElems = Array.from(document.getElementsByClassName('letters'))
         .filter(e => {
@@ -89,7 +90,7 @@ function verifyWord() {
     // Green check
     for (let i = 0; i < word.length; i++) {
         if (word[i] === guess[i]) {
-            wenum[i] = "g"
+            wenum[i] = "g";
         } 
     }
 
@@ -101,7 +102,7 @@ function verifyWord() {
 
         // If (the letter is in the word) and (the letter is not already green or yellow) and (another instance of this letter is not green or yellow)
         if (word.includes(guess[i]) && wenum[i] === "n" && !['g','y'].includes(wenum[dcheck.indexOf(guess[i])]))
-            wenum[i] = "y";
+            wenum[i] = "b";
     }
 
     // Update UI

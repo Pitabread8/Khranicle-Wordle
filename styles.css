@@ -8,13 +8,9 @@
     --white: #FFF;
 }
 
-body {
-    background-color: var(--navy);
-}
+body { background-color: var(--navy); }
 
-:focus {
-    outline: none !important;
-}
+:focus { outline: none !important; }
 
 #word-grid {
     width: auto;
@@ -39,7 +35,6 @@ body {
     caret-color: transparent;
 }
 
-/* These are just placeholder classes, change these to however you had them before */
 .g { background-color: var(--green); }
-.y { background-color: var(--sky); }
+.b { background-color: var(--sky); }
 .n { background-color: var(--queen); }
