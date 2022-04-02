@@ -2,10 +2,16 @@
 // when word AND guess have same repeat letters
 // when guess has three repeat letters and word has that letter
 // chrome copy and paste &$#*&%$
+// when six guesses are wrong
+// end pop-ups instead of alert
+// not enough letters instead of not valid for four letters?
+// repeated animation for invalid words 
+// animation for too short words
+// flip animation for valid words
 
 let word = "nerds";
 let list = document.getElementsByClassName("letters");
-let data = JSON.parse(dictionary);
+let allwords = JSON.parse(dictionary);
 let currentSquareID = 0;
 let rowID = 0;
 
@@ -19,6 +25,14 @@ document.addEventListener('keyup', e => {
         currentSquareID++;
 	} else if (['Enter', 'Return'].includes(e.key)) {
         let square = document.querySelector(`div[squareid="${currentSquareID+1}"][rowid="${rowID}"]`);
+        
+        let error = document.getElementById("error");
+        if (square) {
+            error.style.display = "initial";
+            error.innerText = "Not enough letters";
+            return setTimeout(() => {error.style.display = "none"}, 1500);
+        }
+        
         if (!square) verifyWord();
 	} else if (e.key === 'Backspace') {
         let square = document.querySelector(`div[squareid="${currentSquareID-1}"][rowid="${rowID}"]`);
@@ -42,10 +56,11 @@ document.addEventListener('gameover', () => {
         ).reduce((p, c, i) => p += (i+1) % 5 === 0 ? `${c}\n` : c, '');
     let tries = rowID > 5 ? 'X' : rowID+1;
 
-    let shouldCopy = window.confirm(`KLS Wordle ${tries}/6\n\n${guesses}\nClick "Okay" to copy your results`);
-    if (shouldCopy) 
-        navigator.clipboard.writeText(`KLS Wordle ${tries}/6\n\n${guesses}`)
-        .then(() => alert('Copied!'));
+    // let shouldCopy = window.confirm(`KLS Wordle ${tries}/6\n\n${guesses}\nClick "Okay" to copy your results`);
+    // if (shouldCopy) 
+    //     navigator.clipboard.writeText(`KLS Wordle ${tries}/6\n\n${guesses}`)
+    //     .then(() => alert('Copied!'));
+    console.log(`KLS Wordle ${tries}/6\n\n${guesses}`)
 });
 
 // Creates inputs, sets attributes, adds event listeners
@@ -83,7 +98,15 @@ function verifyWord() {
     let guess = guessElems.map(e => e.textContent).join('');
 
     // Check if word exists
-    if (!data.includes(guess)) return alert("Not a valid word");
+    let error = document.getElementById("error");
+    if (!allwords.includes(guess)) {
+        // for (let i = 0; i < guessElems.length; i++) {
+        //     guessElems[i].classList.add("invalid");
+        // }
+        error.style.display = "initial";
+        error.innerText = "Not a valid word";
+        return setTimeout(() => {error.style.display = "none"}, 1500);
+    }
 
     let wenum = new Array(5).fill('n');
     
@@ -101,7 +124,7 @@ function verifyWord() {
         dcheck = dcheck.join("");
 
         // If (the letter is in the word) and (the letter is not already green or yellow) and (another instance of this letter is not green or yellow)
-        if (word.includes(guess[i]) && wenum[i] === "n" && !['g','y'].includes(wenum[dcheck.indexOf(guess[i])]))
+        if (word.includes(guess[i]) && wenum[i] === "n" && !['g','b'].includes(wenum[dcheck.indexOf(guess[i])]))
             wenum[i] = "b";
     }
 
