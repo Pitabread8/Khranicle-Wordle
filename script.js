@@ -1,10 +1,14 @@
 // to-do:
+// MECHANICS
+// when six guesses are wrong
+// prevent repeating guesses
+// chrome copy and paste &$#*&%$
+// end pop-ups instead of alert
+// ERRORS
 // when word AND guess have same repeat letters
 // when guess has three repeat letters and word has that letter
-// chrome copy and paste &$#*&%$
-// when six guesses are wrong
-// end pop-ups instead of alert
-// not enough letters instead of not valid for four letters?
+// not enough letters instead of not valid for four letters
+// ANIMATIONS
 // repeated animation for invalid words 
 // animation for too short words
 // flip animation for valid words
