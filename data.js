@@ -12973,3 +12973,24 @@ let dictionary = `[
     "shave"
 ]
 `;
+
+let kls = `[
+    "nerds",
+    "smash",
+    "derek",
+    "tooba",
+    "agora",
+    "lissa",
+    "grade",
+    "lejoi",
+    "jason",
+    "robot",
+    "units",
+    "diana",
+    "teach",
+    "malia",
+    "terms",
+    "dance",
+    "level"
+]
+`;

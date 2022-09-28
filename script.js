@@ -4,6 +4,7 @@
 // prevent repeating guesses
 // chrome copy and paste &$#*&%$
 // end pop-ups instead of alert
+// complete list of KLS words
 // ERRORS
 // when word AND guess have same repeat letters
 // when guess has three repeat letters and word has that letter
@@ -13,9 +14,20 @@
 // animation for too short words
 // flip animation for valid words
 
-let word = "nerds";
+const createWord = () => {
+    currentDate = new Date();
+    startDate = new Date(currentDate.getFullYear(), 0, 1);
+    const days = Math.floor((currentDate - startDate) / (24 * 60 * 60 * 1000));
+    const weekNumber = Math.ceil(days / 7);
+    return weekNumber;
+}
+
+const words = JSON.parse(kls);
+const index = Math.floor(Math.random() * words.length);
+// const index = createWord();
+const word = words[index];
 let list = document.getElementsByClassName("letters");
-let allwords = JSON.parse(dictionary);
+const allwords = JSON.parse(dictionary);
 let currentSquareID = 0;
 let rowID = 0;
 
@@ -99,7 +111,7 @@ function verifyWord() {
 
     // Check if word exists
     let error = document.getElementById("error");
-    if (!allwords.includes(guess)) {
+    if (!allwords.includes(guess) && !words.includes(guess)) {
         error.style.display = "initial";
         error.innerText = "Not a valid word";
         return setTimeout(() => {error.style.display = "none"}, 1500);
