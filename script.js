@@ -19,7 +19,7 @@ let allwords = JSON.parse(dictionary);
 let currentSquareID = 0;
 let rowID = 0;
 
-// Centralize Event Capture
+// Centralize event capture
 document.addEventListener('keyup', e => {
     if (e.key.length === 1 && e.key.match(/[a-z]/gi)?.length === 1){
         let square = document.querySelector(`div[squareid="${currentSquareID}"][rowid="${rowID}"]`);
@@ -60,10 +60,6 @@ document.addEventListener('gameover', () => {
         ).reduce((p, c, i) => p += (i+1) % 5 === 0 ? `${c}\n` : c, '');
     let tries = rowID > 5 ? 'X' : rowID+1;
 
-    // let shouldCopy = window.confirm(`KLS Wordle ${tries}/6\n\n${guesses}\nClick "Okay" to copy your results`);
-    // if (shouldCopy) 
-    //     navigator.clipboard.writeText(`KLS Wordle ${tries}/6\n\n${guesses}`)
-    //     .then(() => alert('Copied!'));
     console.log(`KLS Wordle ${tries}/6\n\n${guesses}`)
 });
 
@@ -87,7 +83,7 @@ function createGrid() {
     }
 }
 
-// checks if submission = word
+// Checks if submission = word
 /**
  * word nerds
  * gues nosrs
@@ -104,9 +100,6 @@ function verifyWord() {
     // Check if word exists
     let error = document.getElementById("error");
     if (!allwords.includes(guess)) {
-        // for (let i = 0; i < guessElems.length; i++) {
-        //     guessElems[i].classList.add("invalid");
-        // }
         error.style.display = "initial";
         error.innerText = "Not a valid word";
         return setTimeout(() => {error.style.display = "none"}, 1500);
