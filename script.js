@@ -5,10 +5,12 @@
 // chrome copy and paste &$#*&%$
 // end pop-ups instead of alert
 // complete list of KLS words
+// fix and finish about modal
 // ERRORS
 // when word AND guess have same repeat letters
 // when guess has three repeat letters and word has that letter
 // not enough letters instead of not valid for four letters
+// onclick load error
 // ANIMATIONS
 // repeated animation for invalid words 
 // animation for too short words
@@ -26,6 +28,7 @@ const words = JSON.parse(kls);
 const index = Math.floor(Math.random() * words.length);
 // const index = createWord();
 const word = words[index];
+console.log(word);
 let list = document.getElementsByClassName("letters");
 const allwords = JSON.parse(dictionary);
 let currentSquareID = 0;
@@ -143,9 +146,14 @@ function verifyWord() {
     }
 
     // Check if game over
-    if (wenum.join('') === new Array(5).fill('g').join('')) {
+    if (wenum.join('') === new Array(5).fill('g').join('') || rowID === 5) {
         return document.dispatchEvent(new CustomEvent('gameover'));
     }
 
     rowID++;
+}
+
+const displayModal = () => {
+    document.getElementById("wrapper").classList.toggle("hide");
+    document.getElementById("abt-btn").classList.toggle("hide");
 }

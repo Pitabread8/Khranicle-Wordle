@@ -58,6 +58,69 @@ body {
     caret-color: transparent;
 }
 
+#wrapper {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    backdrop-filter: blur(6px);
+    z-index: 3;
+}
+
+#modal {
+    width: 60%;
+    height: 60%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #242424;
+    border: 5px solid #35A2C3;
+    border-radius: 15px;
+}
+
+#modal div {
+    width: 80%;
+    height: 80%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+h2 {
+    font-size: 36px;
+}
+
+p {
+    font-size: 24px;
+    line-height: 1.3em;
+}
+
+#abt-btn {
+    position: absolute;
+    right: 2vh;
+    top: 2vh;
+    border: 1px solid rgba(255, 255, 255, 0.87);
+}
+
+#x-btn {
+    position: absolute;
+    right: 0;
+    background-color: transparent;
+    border-radius: 15px;
+    font-size: 30px;
+}
+
+.hide {
+    display: none;
+}
 
 /* @keyframes duration | easing-function | delay |
 iteration-count | direction | fill-mode | play-state | name */
